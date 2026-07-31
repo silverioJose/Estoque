@@ -22,33 +22,16 @@ public class ProductService {
 	}
 	
 	public List<Product> listAll() throws SQLException {
-		List<Product> all = productDAO.findAll();
-		List<Product> result = new ArrayList<>();
-		
-		for (Product p : all) {
-			result.add(p);
-		}
-		return result;
+		return productDAO.findAll();
 	}
 	
-	public List<Product> listByCategory(int categoryId) throws SQLException {
-		List<Product> all = productDAO.findAll();
-		List<Product> result = new ArrayList<>();
-		
-		for (Product p : all) {
-			if(p.getCategory().getId()==categoryId) {
-				result.add(p);
-			}
-		}
-		return result;
-	}
 	
 	public List<Product> listByDepartment(int departmentId) throws SQLException {
 		List<Product> all = productDAO.findAll();
 		List<Product> result = new ArrayList<>();
 		
 		for (Product p : all) {
-			if(p.getCategory().getId()==departmentId) {
+			if(p.getDepartment().getId()==departmentId) {
 				result.add(p);
 			}
 		}
@@ -56,6 +39,10 @@ public class ProductService {
 	}
 	
 	public void deactivate(int id) throws SQLException {
-		
+		productDAO.updateActive(id, false);
+	}
+	
+	public void activate(int id) throws SQLException {
+		productDAO.updateActive(id, true);
 	}
 }

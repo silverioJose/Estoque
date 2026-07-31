@@ -17,7 +17,6 @@ public class ProductDAO {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql)) {
 			
-			CategoryDAO categoryDAO = new CategoryDAO();
 			UnitDAO unitDAO = new UnitDAO();
 			
 			while (rs.next()) {
@@ -27,7 +26,6 @@ public class ProductDAO {
 				p.setDescription(rs.getString("description"));
 				p.setCurrentStock(rs.getInt("current_stock"));
 				p.setMinimumStock(rs.getInt("minimum_stock"));
-				p.setCategory(categoryDAO.findById(rs.getInt("category_id")));
 				p.setStockUnit(unitDAO.findById(rs.getInt("stock_unit_id")));
 				p.setContentUnit(unitDAO.findById(rs.getInt("content_unit_id")));
 				p.setPackageContent(rs.getDouble("package_content"));
@@ -40,7 +38,7 @@ public class ProductDAO {
 		}
 		
 	public void insert(Product product) throws SQLException{
-		String sql = "INSERT INTO product (name, description, minimum_stock, category_id, stock_unit_id, package_content, content_unit_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO product (name, description, minimum_stock, department_id, stock_unit_id, package_content, content_unit_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
 		try (Connection conn = Conn.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -48,7 +46,7 @@ public class ProductDAO {
 			pstmt.setString(1, product.getName());
 			pstmt.setString(2, product.getDescription());
 			pstmt.setInt(3, product.getMinimumStock());
-			pstmt.setInt(4, product.getCategory().getId());
+			pstmt.setInt(4, product.getDepartment().getId());
 			pstmt.setInt(5, product.getStockUnit().getId());
 			pstmt.setDouble(6, product.getPackageContent());
 			pstmt.setInt(7, product.getContentUnit().getId());
@@ -68,7 +66,6 @@ public class ProductDAO {
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				CategoryDAO categoryDAO = new CategoryDAO();
 				UnitDAO unitDAO = new UnitDAO();
 				Product p = new Product();
 				p.setId(rs.getInt("id"));
@@ -76,7 +73,6 @@ public class ProductDAO {
 				p.setDescription(rs.getString("description"));
 				p.setCurrentStock(rs.getInt("current_stock"));
 				p.setMinimumStock(rs.getInt("minimum_stock"));
-				p.setCategory(categoryDAO.findById(rs.getInt("category_id")));
 				p.setStockUnit(unitDAO.findById(rs.getInt("stock_unit_id")));
 				p.setContentUnit(unitDAO.findById(rs.getInt("content_unit_id")));
 				p.setPackageContent(rs.getDouble("package_content"));
@@ -107,6 +103,17 @@ public class ProductDAO {
 			pstmt.setInt(1, product.getCurrentStock());
 			pstmt.setInt(2, product.getId());
 			pstmt.executeUpdate();
+		}
+	}
+	
+	public void updateActive(int id, boolean active) throws SQLException {
+		String sql = "UPDATE product SET active = ? WHERE id = ?";
+		
+		try (Connection conn = Conn.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setInt(1, active ? 1 : 0);
+			pstmt.setInt(2, id);
 		}
 	}
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventory.controller.RootController">
+   <top>
+      <HBox prefHeight="46.0" prefWidth="800.0" styleClass="nav__hbox">
+         <children>
+            <Label prefHeight="27.0" prefWidth="73.0" styleClass="title" text="Estoque*" />
+
+            <Region prefHeight="46.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+
+            <Button fx:id="btnHome" mnemonicParsing="false" onAction="#showHome">
+               <styleClass>
+                  <String fx:value="nav__button" />
+                  <String fx:value="nav__button_home" />
+               </styleClass>
+            </Button>
+            <Button fx:id="btnMovements" mnemonicParsing="false" onAction="#showMovements">
+               <styleClass>
+                  <String fx:value="nav__button" />
+                  <String fx:value="nav__button_mov" />
+               </styleClass>
+            </Button>
+            <Button fx:id="btnList" mnemonicParsing="false" onAction="#showList">
+               <styleClass>
+                  <String fx:value="nav__button" />
+                  <String fx:value="nav__button_list" />
+               </styleClass>
+            </Button>
+            <Button mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="nav__button_search" />
+                  <String fx:value="nav__button" />
+               </styleClass>
+            </Button>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <Button mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="nav__button" />
+                  <String fx:value="nav__button_config" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

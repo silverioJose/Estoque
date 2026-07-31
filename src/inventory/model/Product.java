@@ -1,6 +1,6 @@
 package inventory.model;
 
-import inventory.model.Category;
+import inventory.model.Department;
 import inventory.model.Unit;
 
 public class Product {
@@ -10,7 +10,7 @@ public class Product {
     private String description;
     private int currentStock;
     private int minimumStock;
-    private Category category;
+    private Department department;
     private Unit stockUnit;
     private double packageContent;
     private Unit contentUnit;
@@ -46,11 +46,11 @@ public class Product {
 	public void setMinimumStock(int minimumStock) {
 		this.minimumStock = minimumStock;
 	}
-	public Category getCategory() {
-		return category;
+	public Department getDepartment() {
+		return department;
 	}
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 	public Unit getStockUnit() {
 		return stockUnit;

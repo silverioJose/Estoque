@@ -2,6 +2,7 @@ package application;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
 
 import inventory.service.StockService;
@@ -14,19 +15,13 @@ public class Main{
 		DepartmentDAO departmentDAO = new DepartmentDAO();
 		System.out.println("Inicio\n");
 		
-		Scanner input = new Scanner(System.in);
+		System.out.println("Departamentos: \n");
 		
-		System.out.println("Criação de departamento: \n");
-		System.out.println("Digite o nome: \n");
+		List<Department> list = departmentDAO.findAll();
+
+		for (Department d : list) {
+		    System.out.println(d.getId() + " - " + d.getName());
+		}
 		
-		
-		
-		String departamento = input.nextLine();
-		Department d = new Department();
-		d.setName(departamento);
-		departmentDAO.insert(d);
-		departmentDAO.findAll();
-		
-		input.close();
 	}
 }

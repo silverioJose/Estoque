@@ -1,0 +1,151 @@
+:root {
+  -periwinkle-1: rgb(237, 240, 255);
+  -periwinkle-2: rgb(220, 226, 255);
+  -light-lavender: rgb(194, 205, 255);
+  -periwinkle-4: rgb(168, 185, 255);
+  -periwinkle-5: rgb(130, 158, 255);
+  -periwinkle-6: rgb(75, 127, 255);
+  -periwinkle-7: rgb(0, 97, 227);
+  -periwinkle-8: rgb(0, 69, 166);
+  -periwinkle-9: rgb(0, 41, 107);
+  -periwinkle-10: rgb(0, 15, 49);
+
+  -fx-font-family: "Poppins-Regular";
+}
+
+/*Title*/
+
+.title {
+	-fx-background-color: -light-lavender;
+	-fx-padding: 5 10;
+	-fx-background-radius: 50px;
+	-fx-alignment: CENTER_LEFT;
+	-fx-font-weight: bold;
+}
+
+/*Department buttons*/
+
+.dept__button {
+	-fx-font-family: "Poppins-Regular";
+	
+	-fx-background-color: -light-lavender;
+	-fx-padding: 5 10;
+	-fx-background-radius: 50px;
+}
+
+.dept__button:hover {
+	-fx-cursor: hand;
+	-fx-scale-x: 1.1;
+	-fx-scale-y: 1.1;
+}
+
+.dept__hbox {
+	-fx-spacing: 26;
+	-fx-alignment: center;
+}
+
+/*Navigation buttons*/
+
+.nav__button {
+	-fx-background-color: -light-lavender;
+	-fx-padding: 5 10;
+	-fx-background-radius: 999px;
+}
+
+.nav__button_config {
+	-fx-background-image: url("../../icons/settings.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 20px 20px;
+	-fx-pref-width: 28px;
+	-fx-pref-height: 28px;
+}
+
+.nav__button_home {
+	-fx-background-image: url("../../icons/home.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 20px 20px;
+	-fx-pref-width: 28px;
+	-fx-pref-height: 28px;
+	
+	-fx-padding: 5 10;
+	-fx-background-color: white;
+	-fx-border-color: -light-lavender;
+	-fx-border-width: 2px;
+	-fx-border-radius: 999px;
+	-fx-background-radius: 999px;
+}
+
+.nav__button_search {
+	-fx-background-image: url("../../icons/search.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 20px 20px;
+	-fx-pref-width: 28px;
+	-fx-pref-height: 28px;
+}
+
+.nav__button_list {
+	-fx-background-image: url("../../icons/list.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 20px 20px;
+	-fx-pref-width: 28px;
+	-fx-pref-height: 28px;
+}
+
+.nav__button_mov {
+	-fx-background-image: url("../../icons/mov.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 20px 20px;
+	-fx-pref-width: 28px;
+	-fx-pref-height: 28px;
+}
+
+.nav__button:hover {
+	-fx-cursor: hand;
+	-fx-scale-x: 1.1;
+	-fx-scale-y: 1.1;
+}
+
+.nav__hbox {
+	-fx-spacing: 50;
+	-fx-padding: 20;
+	-fx-alignment: center;
+}
+
+/*Insert button*/
+
+.button_add {
+	-fx-background-color: -light-lavender;
+	-fx-padding: 3 10;
+	-fx-background-radius: 50px;
+	-fx-font-size: 20px;
+	-fx-font-weight: bold;
+}
+
+.button_add:hover {
+	-fx-cursor: hand;
+	-fx-scale-x: 1.1;
+	-fx-scale-y: 1.1;
+}
+
+/*Products cards*/
+
+.product__card {
+	-fx-alignment: CENTER;
+	-fx-background-color: white;
+	-fx-background-radius: 15;
+	-fx-border-radius: 15;
+	-fx-padding: 12;
+	-fx-spacing: 8;
+}
+
+.product__cards_container {
+	-fx-background-color: transparent;
+	-fx-border-color: transparent;
+	-fx-background-insets: 0;
+	-fx-padding: 0;
+}
