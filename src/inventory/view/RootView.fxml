@@ -11,7 +11,7 @@
    <top>
       <HBox prefHeight="46.0" prefWidth="800.0" styleClass="nav__hbox">
          <children>
-            <Label prefHeight="27.0" prefWidth="73.0" styleClass="title" text="Estoque*" />
+            <Label prefHeight="27.0" prefWidth="73.0" styleClass="title" text="Teste" />
 
             <Region prefHeight="46.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -25,12 +26,11 @@
             <Button fx:id="btnAnimals" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Animais" />
          </children>
       </HBox>
-      <Label layoutX="24.0" layoutY="73.0" text="Produtos" />
       <HBox layoutX="24.0" layoutY="104.0" prefHeight="200.0" prefWidth="752.0">
          <children>
-            <ScrollPane fitToHeight="true" hbarPolicy="AS_NEEDED" pannable="true" prefHeight="232.0" prefWidth="800.0" styleClass="product__cards_container" vbarPolicy="NEVER">
+            <ScrollPane fx:id="productsScrollPane" fitToHeight="true" hbarPolicy="NEVER" pannable="true" prefHeight="232.0" prefWidth="800.0" styleClass="product__cards_container" vbarPolicy="NEVER">
                <content>
-                  <HBox fx:id="productCardsOrganizer" alignment="CENTER_LEFT" prefHeight="162.0" prefWidth="180.0" styleClass="product__cards_organizer">
+                  <HBox fx:id="productCardsOrganizer" alignment="CENTER_LEFT" prefHeight="162.0" spacing="12.0" styleClass="product__cards_organizer">
                      <children>
                         <VBox prefHeight="71.0" prefWidth="180.0" styleClass="product__card">
                            <children>
@@ -47,7 +47,7 @@
 
                                     <Region prefHeight="0.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
 
-                                    <Label prefHeight="17.0" prefWidth="144.0" text="Quantidade">
+                                    <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="144.0" text="Quantidade">
                                        <HBox.margin>
                                           <Insets right="5.0" />
                                        </HBox.margin></Label>
@@ -63,5 +63,19 @@
          </children>
       </HBox>
       <Button fx:id="btnAdd" layoutX="729.0" layoutY="401.0" mnemonicParsing="false" styleClass="button_add" text="+" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <HBox layoutX="13.0" layoutY="53.0" prefHeight="34.0" prefWidth="775.0">
+         <children>
+            <Label prefHeight="35.0" prefWidth="48.0" text="Produtos" />
+            <Region prefHeight="10.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleScrollLeft" styleClass="dept__button" text="◀-">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleScrollRight" styleClass="dept__button" text="-▶">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
