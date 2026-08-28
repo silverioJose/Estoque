@@ -40,7 +40,7 @@
 }
 
 .dept__hbox {
-	-fx-spacing: 26;
+	-fx-spacing: 22;
 	-fx-alignment: center;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .nav__button_config {
-	-fx-background-image: url("../../icons/settings.png");
+	-fx-background-image: url("../../icons/config.png");
 	-fx-background-repeat: no-repeat;
 	-fx-background-position: center;
 	-fx-background-size: 20px 20px;

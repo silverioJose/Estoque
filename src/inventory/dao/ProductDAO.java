@@ -45,36 +45,6 @@ public class ProductDAO {
 		return list;
 	}
 	
-//	public List<Product> findAll() throws SQLException{
-//		List<Product> list = new ArrayList<>();
-//		String sql = "SELECT * FROM product";
-//		
-//		try (Connection conn = Conn.getConnection();
-//			Statement stmt = conn.createStatement();
-//			ResultSet rs = stmt.executeQuery(sql)) {
-//			
-//			UnitDAO unitDAO = new UnitDAO();
-//			DepartmentDAO departmentDAO = new DepartmentDAO();
-//			
-//			while (rs.next()) {
-//				Product p = new Product();
-//				p.setId(rs.getInt("id"));
-//				p.setName(rs.getString("name"));
-//				p.setDescription(rs.getString("description"));
-//				p.setCurrentStock(rs.getInt("current_stock"));
-//				p.setMinimumStock(rs.getInt("minimum_stock"));
-//				p.setDepartment(departmentDAO.findById(rs.getInt("department_id")));
-//				p.setStockUnit(unitDAO.findById(rs.getInt("stock_unit_id")));
-//				p.setContentUnit(unitDAO.findById(rs.getInt("content_unit_id")));
-//				p.setPackageContent(rs.getDouble("package_content"));
-//				p.setActive(rs.getInt("active") == 1);
-//				
-//				list.add(p);
-//			}
-//		}
-//		return list;
-//		}
-		
 	public void insert(Product product) throws SQLException{
 		String sql = "INSERT INTO product (name, description, minimum_stock, department_id, stock_unit_id, package_content, content_unit_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
@@ -111,35 +81,6 @@ public class ProductDAO {
 		return null;
 	}
 	
-//	public Product findById(int id) throws SQLException {
-//		String sql = "SELECT * FROM product WHERE id = ?";
-//		
-//		try (Connection conn = Conn.getConnection();
-//			PreparedStatement pstmt = conn.prepareStatement(sql)) {
-//			
-//			pstmt.setInt(1, id);
-//			ResultSet rs = pstmt.executeQuery();
-//			
-//			if(rs.next()) {
-//				UnitDAO unitDAO = new UnitDAO();
-//				DepartmentDAO departmentDAO = new DepartmentDAO();
-//				Product p = new Product();
-//				p.setId(rs.getInt("id"));
-//				p.setName(rs.getString("name"));
-//				p.setDescription(rs.getString("description"));
-//				p.setCurrentStock(rs.getInt("current_stock"));
-//				p.setMinimumStock(rs.getInt("minimum_stock"));
-//				p.setDepartment(departmentDAO.findById(rs.getInt("department_id")));
-//				p.setStockUnit(unitDAO.findById(rs.getInt("stock_unit_id")));
-//				p.setContentUnit(unitDAO.findById(rs.getInt("content_unit_id")));
-//				p.setPackageContent(rs.getDouble("package_content"));
-//				p.setActive(rs.getInt("active") == 1);
-//				return p;
-//			}
-//		}
-//		return null;
-//	}
-	
 	public List<Product> findByDepartment(int departmentId) throws SQLException {
 	    List<Product> list = new ArrayList<>();
 	    String sql = "SELECT * FROM product WHERE department_id = ? AND active = 1";
@@ -174,76 +115,44 @@ public class ProductDAO {
 	
 	// departmentId accepts null to represent "no department filter" (show all active products)
 	public List<Product> findActive(Integer departmentId) throws SQLException {
-	    List<Product> list = new ArrayList<>();
-	    String sql = "SELECT * FROM product WHERE active = 1"
-	               + (departmentId != null ? " AND department_id = ?" : "");
-
-	    try (Connection conn = Conn.getConnection();
-	        PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-	        if (departmentId != null) {
-	            pstmt.setInt(1, departmentId);
-	        }
-
-	        ResultSet rs = pstmt.executeQuery();
-
-	        UnitDAO unitDAO = new UnitDAO();
-	        DepartmentDAO departmentDAO = new DepartmentDAO();
-
-	        while (rs.next()) {
-	            Product p = new Product();
-	            p.setId(rs.getInt("id"));
-	            p.setName(rs.getString("name"));
-	            p.setDescription(rs.getString("description"));
-	            p.setCurrentStock(rs.getInt("current_stock"));
-	            p.setMinimumStock(rs.getInt("minimum_stock"));
-	            p.setDepartment(departmentDAO.findById(rs.getInt("department_id")));
-	            p.setStockUnit(unitDAO.findById(rs.getInt("stock_unit_id")));
-	            p.setContentUnit(unitDAO.findById(rs.getInt("content_unit_id")));
-	            p.setPackageContent(rs.getDouble("package_content"));
-	            p.setActive(true);
-
-	            list.add(p);
-	        }
-	    }
-	    return list;
+		List<Product> list = new ArrayList<>();
+		String sql = "SELECT * FROM product WHERE active = 1" 
+				+ (departmentId != null ? " AND department_id = ?" : "");
+		
+		try (Connection conn = Conn.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			if (departmentId != null ) {
+				pstmt.setInt(1,  departmentId);
+			}
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				list.add(mapResultSetToProduct(rs));
+			}
+		}
+		return list;
 	}
 	
 	// returns active products whose current stock is at or below the minimum threshold
 	public List<Product> findLowStock(Integer departmentId) throws SQLException {
-	    List<Product> list = new ArrayList<>();
-	    String sql = "SELECT * FROM product WHERE active = 1 AND current_stock <= minimum_stock"
-	               + (departmentId != null ? " AND department_id = ?" : "");
-
-	    try (Connection conn = Conn.getConnection();
-	        PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-	        if (departmentId != null) {
-	            pstmt.setInt(1, departmentId);
-	        }
-
-	        ResultSet rs = pstmt.executeQuery();
-
-	        UnitDAO unitDAO = new UnitDAO();
-	        DepartmentDAO departmentDAO = new DepartmentDAO();
-
-	        while (rs.next()) {
-	            Product p = new Product();
-	            p.setId(rs.getInt("id"));
-	            p.setName(rs.getString("name"));
-	            p.setDescription(rs.getString("description"));
-	            p.setCurrentStock(rs.getInt("current_stock"));
-	            p.setMinimumStock(rs.getInt("minimum_stock"));
-	            p.setDepartment(departmentDAO.findById(rs.getInt("department_id")));
-	            p.setStockUnit(unitDAO.findById(rs.getInt("stock_unit_id")));
-	            p.setContentUnit(unitDAO.findById(rs.getInt("content_unit_id")));
-	            p.setPackageContent(rs.getDouble("package_content"));
-	            p.setActive(true);
-
-	            list.add(p);
-	        }
-	    }
-	    return list;
+		List<Product> list = new ArrayList<>();
+		String sql = "SELECT * FROM product WHERE active = 1 AND current_stock <= minimum_stock"
+				+ (departmentId != null ? " AND department_id = ?" : "");
+		
+		try (Connection conn = Conn.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			if (departmentId != null) {
+				pstmt.setInt(1, departmentId);
+			}
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				list.add(mapResultSetToProduct(rs));
+			}
+		}
+		return list;
 	}
 	
 	public void delete(int id) throws SQLException {

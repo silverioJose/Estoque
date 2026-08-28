@@ -15,9 +15,9 @@ public class Conn {
 		}
 		new File("db").mkdirs();
 		
-		/*
-		System.out.println("Database in: " + new File("db/stock.db").getAbsolutePath());
-		*/
+		
+		// System.out.println("Database in: " + new File("db/stock.db").getAbsolutePath());
+		
 		
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:db/stock.db");
 		

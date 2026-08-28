@@ -3,79 +3,192 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventory.controller.HomeController">
+<StackPane xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventory.controller.HomeController">
    <children>
-      <HBox layoutX="6.0" layoutY="12.0" prefHeight="27.0" prefWidth="787.0" styleClass="dept__hbox">
+
+      <!-- ===================== CONTEÚDO PRINCIPAL ===================== -->
+      <AnchorPane>
          <children>
-            <Button fx:id="btnDrinks" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Bebidas" />
-            <Button fx:id="btnCereals" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Cereais" />
-            <Button fx:id="btnCold" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Frios" />
-            <Button fx:id="btnHygiene" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Higiene" />
-            <Button fx:id="btnHortifruti" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Hortifruti" />
-            <Button fx:id="btnMeat" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Carnes" />
-            <Button fx:id="btnFrozen" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Congelados" />
-            <Button fx:id="btnCleaning" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Limpeza" />
-            <Button fx:id="btnAnimals" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Animais" />
-         </children>
-      </HBox>
-      <HBox layoutX="24.0" layoutY="104.0" prefHeight="200.0" prefWidth="752.0">
-         <children>
-            <ScrollPane fx:id="productsScrollPane" fitToHeight="true" hbarPolicy="NEVER" pannable="true" prefHeight="232.0" prefWidth="800.0" styleClass="product__cards_container" vbarPolicy="NEVER">
+            <!-- ScrollPane ocupando toda a área, ancorada nos 4 lados -->
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
-                  <HBox fx:id="productCardsOrganizer" alignment="CENTER_LEFT" prefHeight="162.0" spacing="12.0" styleClass="product__cards_organizer">
+                  <VBox spacing="10.0">
                      <children>
-                        <VBox prefHeight="71.0" prefWidth="180.0" styleClass="product__card">
+
+                        <HBox prefHeight="27.0" styleClass="dept__hbox">
                            <children>
-                              <ImageView fx:id="productImg" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </VBox.margin></ImageView>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="126.0" text="Produto">
-                                       <HBox.margin>
-                                          <Insets left="5.0" />
-                                       </HBox.margin></Label>
-
-                                    <Region prefHeight="0.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
-
-                                    <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="144.0" text="Quantidade">
-                                       <HBox.margin>
-                                          <Insets right="5.0" />
-                                       </HBox.margin></Label>
-                                 </children>
-                              </HBox>
+                              <Button fx:id="btnDrinks" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Bebidas" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnCereals" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Cereais" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnCold" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Frios" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnHygiene" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Higiene" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnHortifruti" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Hortifruti" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnMeat" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Carnes" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnFrozen" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Congelados" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnCleaning" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Limpeza" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnAnimals" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDepartmentClick" styleClass="dept__button" text="Animais" HBox.hgrow="ALWAYS" />
                            </children>
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin></VBox>
-                     </children></HBox>
+                        </HBox>
+
+                        <HBox prefHeight="34.0">
+                           <children>
+                              <Label prefHeight="35.0" prefWidth="48.0" text="Produtos" />
+                              <Region prefHeight="10.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleProductsScrollLeft" styleClass="dept__button" text="◀-">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
+                              <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleProductsScrollRight" styleClass="dept__button" text="-▶">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
+                           </children>
+                        </HBox>
+
+                        <HBox prefHeight="200.0">
+                           <children>
+                              <ScrollPane fx:id="productsScrollPane" fitToHeight="true" hbarPolicy="NEVER" pannable="true" prefHeight="232.0" styleClass="product__cards_container" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
+                                 <content>
+                                    <HBox fx:id="productCardsOrganizer" alignment="CENTER_LEFT" prefHeight="162.0" spacing="12.0" styleClass="product__cards_organizer">
+                                       <children>
+                                          <VBox prefHeight="71.0" prefWidth="180.0" styleClass="product__card">
+                                             <children>
+                                                <ImageView fx:id="productImg" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </VBox.margin></ImageView>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label prefHeight="17.0" prefWidth="126.0" text="Produto">
+                                                         <HBox.margin>
+                                                            <Insets left="5.0" />
+                                                         </HBox.margin></Label>
+
+                                                      <Region prefHeight="0.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+
+                                                      <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="144.0" text="Quantidade">
+                                                         <HBox.margin>
+                                                            <Insets right="5.0" />
+                                                         </HBox.margin></Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin></VBox>
+                                       </children></HBox>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </HBox>
+
+                        <HBox prefHeight="34.0">
+                           <children>
+                              <Label prefHeight="34.0" prefWidth="154.0" text="Baixo Estoque" />
+                              <Region prefHeight="10.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleLowStockScrollLeft" styleClass="dept__button" text="◀-">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleLowStockScrollRight" styleClass="dept__button" text="-▶">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+
+                        <HBox prefHeight="200.0">
+                           <children>
+                              <ScrollPane fx:id="lowStockScrollPane" fitToHeight="true" hbarPolicy="NEVER" pannable="true" prefHeight="232.0" styleClass="product__cards_container" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
+                                 <content>
+                                    <HBox fx:id="lowStockCardsOrganizer" alignment="CENTER_LEFT" prefHeight="162.0" spacing="12.0" styleClass="product__cards_organizer">
+                                       <children>
+                                          <VBox prefHeight="71.0" prefWidth="180.0" styleClass="product__card">
+                                             <children>
+                                                <ImageView fx:id="productImg1" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label prefHeight="17.0" prefWidth="126.0" text="Produto">
+                                                         <HBox.margin>
+                                                            <Insets left="5.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <Region prefHeight="0.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+                                                      <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="144.0" text="Quantidade">
+                                                         <HBox.margin>
+                                                            <Insets right="5.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </HBox>
+
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="13.0" right="13.0" top="12.0" />
+                     </padding>
+                  </VBox>
                </content>
             </ScrollPane>
+
+            <!-- Botão fixo, fora da área rolável -->
+            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#handleShowAddModal" styleClass="button_add" text="+" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
          </children>
-      </HBox>
-      <Button fx:id="btnAdd" layoutX="729.0" layoutY="401.0" mnemonicParsing="false" styleClass="button_add" text="+" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-      <HBox layoutX="13.0" layoutY="53.0" prefHeight="34.0" prefWidth="775.0">
+      </AnchorPane>
+
+      <!-- ===================== MODAL: CADASTRO RÁPIDO ===================== -->
+      <StackPane fx:id="modalOverlay" managed="false" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false">
          <children>
-            <Label prefHeight="35.0" prefWidth="48.0" text="Produtos" />
-            <Region prefHeight="10.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleScrollLeft" styleClass="dept__button" text="◀-">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleScrollRight" styleClass="dept__button" text="-▶">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
+            <VBox fx:id="modalCard" alignment="CENTER" maxHeight="360.0" maxWidth="320.0" spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="modal__card">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+               <children>
+                  <Label  maxWidth="1.7976931348623157E308" alignment="CENTER" styleClass="dept__button" text="Novo Produto" HBox.hgrow="ALWAYS" />
+
+                  <TextField fx:id="fieldProductName" promptText="Nome do produto" />
+				  <ComboBox fx:id="comboDepartment" maxWidth="1.7976931348623157E308" promptText="Departamento" />
+				  <TextField fx:id="fieldProductQuantity" promptText="Quantidade inicial" />
+				  <TextField fx:id="fieldMinimumStock" promptText="Quantidade mínima" />
+				  <ComboBox fx:id="comboUnit" maxWidth="1.7976931348623157E308" promptText="Unidade" />
+
+                  <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" maxWidth="1.7976931348623157E308" onAction="#handleCancelAdd" styleClass="dept__button" text="Cancelar" HBox.hgrow="ALWAYS" />
+                        <Region prefHeight="0.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" maxWidth="1.7976931348623157E308" onAction="#handleSaveProduct" styleClass="dept__button" text="Salvar" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
-      </HBox>
+      </StackPane>
+
    </children>
-</AnchorPane>
+</StackPane>

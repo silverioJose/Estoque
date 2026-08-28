@@ -9,11 +9,11 @@
 
 <BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inventory.controller.RootController">
    <top>
-      <HBox prefHeight="46.0" prefWidth="800.0" styleClass="nav__hbox">
+      <HBox prefHeight="27.0" prefWidth="800.0" styleClass="nav__hbox">
          <children>
             <Label prefHeight="27.0" prefWidth="73.0" styleClass="title" text="Teste" />
 
-            <Region prefHeight="46.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <Region prefHeight="27.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
 
             <Button fx:id="btnHome" mnemonicParsing="false" onAction="#showHome">
                <styleClass>

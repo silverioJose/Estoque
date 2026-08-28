@@ -19,6 +19,8 @@ public class App extends Application {
         scene.getStylesheets().add(css);
         stage.setTitle("Estoque");
         stage.setScene(scene);
+        stage.setMinWidth(830);
+        stage.setMinHeight(550);
         stage.show();
     }
 
