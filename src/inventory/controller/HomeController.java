@@ -53,6 +53,9 @@ public class HomeController {
     private TextField fieldProductQuantity;
 
     @FXML
+    private TextField fieldMinimumStock;
+
+    @FXML
     private ComboBox<Department> comboDepartment;
 
     @FXML
@@ -246,6 +249,7 @@ public class HomeController {
 
         fieldProductName.clear();
         fieldProductQuantity.clear();
+        fieldMinimumStock.clear();
         comboDepartment.getSelectionModel().clearSelection();
         comboUnit.getSelectionModel().clearSelection();
 
@@ -262,17 +266,21 @@ public class HomeController {
     private void handleSaveProduct(ActionEvent event) {
         String name = fieldProductName.getText();
         String quantityText = fieldProductQuantity.getText();
+        String minimumStockText = fieldMinimumStock.getText();
         Department department = comboDepartment.getSelectionModel().getSelectedItem();
         Unit unit = comboUnit.getSelectionModel().getSelectedItem();
 
         if (name == null || name.isBlank() || department == null || unit == null) {
+        	System.out.println("Campos não preenchidos");
             // TODO: mostrar feedback visual de erro em vez de apenas ignorar
             return;
         }
 
         int quantity;
+        int minimumStock;
         try {
             quantity = Integer.parseInt(quantityText.trim());
+            minimumStock = Integer.parseInt(minimumStockText.trim());
         } catch (NumberFormatException e) {
             // TODO: mostrar feedback visual de erro (quantidade inválida)
             return;
@@ -281,7 +289,7 @@ public class HomeController {
         Product product = new Product();
         product.setName(name);
         product.setDescription("");
-        product.setMinimumStock(0);
+        product.setMinimumStock(minimumStock);
         product.setDepartment(department);
         product.setStockUnit(unit);
         product.setContentUnit(unit);
