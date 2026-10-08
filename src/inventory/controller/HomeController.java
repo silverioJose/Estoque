@@ -41,6 +41,7 @@ public class HomeController {
     private final UnitDAO unitDAO = new UnitDAO();
 
     private Department selectedDepartment;
+    private Button selectedDepartmentButton;
 
     // ===== Modal de cadastro rápido =====
     @FXML
@@ -140,8 +141,11 @@ public class HomeController {
         HBox.setHgrow(region, Priority.ALWAYS);
         
         Label quantityLabel = new Label(String.valueOf(product.getCurrentStock()));
+        Label unityLabel = new Label(String.valueOf(product.getStockUnit()));
 
-        HBox infoBox = new HBox(nameLabel, region, quantityLabel);
+        HBox infoBox = new HBox(nameLabel, region, quantityLabel, unityLabel);
+        infoBox.setSpacing(5);
+        //infoBox.getStyleClass().add("");
         card.getChildren().add(infoBox);
 
         return card;
@@ -151,6 +155,12 @@ public class HomeController {
     private void handleDepartmentClick(ActionEvent event) {
         Button clickedButton = (Button) event.getSource();
         String departmentName = clickedButton.getText();
+        
+        if (selectedDepartmentButton != null) {
+            selectedDepartmentButton.getStyleClass().remove("department__button-active");
+        }
+	        selectedDepartmentButton = clickedButton;
+	        selectedDepartmentButton.getStyleClass().add("department__button-active");
 
         try {
             List<Department> departments = departmentDAO.findAll();
@@ -272,7 +282,7 @@ public class HomeController {
 
         if (name == null || name.isBlank() || department == null || unit == null) {
         	System.out.println("Campos não preenchidos");
-            // TODO: mostrar feedback visual de erro em vez de apenas ignorar
+            
             return;
         }
 
@@ -282,7 +292,7 @@ public class HomeController {
             quantity = Integer.parseInt(quantityText.trim());
             minimumStock = Integer.parseInt(minimumStockText.trim());
         } catch (NumberFormatException e) {
-            // TODO: mostrar feedback visual de erro (quantidade inválida)
+            
             return;
         }
 

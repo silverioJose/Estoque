@@ -31,6 +31,20 @@
 	-fx-background-color: -light-lavender;
 	-fx-padding: 5 10;
 	-fx-background-radius: 50px;
+	
+	-fx-border-color: transparent;
+    -fx-border-width: 2;
+}
+
+.department__button-active {
+	-fx-padding: 5 10;
+	-fx-background-color: transparent;
+	-fx-border-color: -light-lavender;
+	-fx-border-width: 2px;
+	-fx-border-radius: 999px;
+	-fx-background-radius: 999px;
+	-fx-scale-x: 1.1;
+	-fx-scale-y: 1.1;
 }
 
 .dept__button:hover {
@@ -135,7 +149,7 @@
 /*Products cards*/
 
 .product__card {
-	-fx-alignment: CENTER;
+	-fx-alignment: BOTTOM-CENTER;
 	-fx-background-color: white;
 	-fx-background-radius: 15;
 	-fx-border-radius: 15;
@@ -149,3 +163,4 @@
 	-fx-background-insets: 0;
 	-fx-padding: 0;
 }
+
